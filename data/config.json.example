@@ -1,0 +1,5 @@
+{
+    "token": "bot token goes here",
+    "clientID": "bot clientID goes here",
+    "prefix": "ar!"
+}

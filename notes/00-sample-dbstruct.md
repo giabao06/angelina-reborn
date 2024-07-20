@@ -13,7 +13,9 @@
 - all info is taken from op.json
 - op command should query based on name
 - cache oplist on startup based on rarity into a json? (in case op not found/user request)
-- query syntax:
+    - there should be a script to run every time we update the database ig?
+- query syntax (not needed if we use sequelize):
+
 ```sql
 SELECT * FROM operators WHERE name='(name)'
 ```

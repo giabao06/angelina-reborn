@@ -1,9 +1,9 @@
 # angelina-reborn
 
-[Angelina-chan](https://github.com/SakanaKochiya/angelina-chan-sc), but rewritten in typescript and uses a sqlite db. Licensed under the MIT LIcense
+[Angelina-chan](https://github.com/SakanaKochiya/angelina-chan-sc), but rewritten and uses a sqlite db. Licensed under the MIT License
 
 ## why rewrite?
-this project is more like `"my mind went nuts recently plus i just learned sql so i want to put it into use"`. also great opportunity for me to learn/practice js/ts and sql.
+this project is more like `"my mind went nuts recently plus i just learned sql so i want to put it into use"`. also great opportunity for me to learn/practice js and sql.
 
 i also wanted to do a lot more that the old one can't do. there's also a lot of other stuff that needed a rewrite anyway (*cough cough* gacha command)
 
