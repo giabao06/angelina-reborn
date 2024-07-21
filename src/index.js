@@ -25,8 +25,8 @@ fs.readdirSync('./commands')
 		 * @type {Command}
 		 */
         const cmd = require(`./commands/${file}`);
-        client.commands.set(Command.name,cmd);
-        console.log(`loaded command ${Command.name}`);
+        client.commands.set(cmd.name,cmd);
+        console.log(`loaded command ${cmd.name}`);
     });
 
 client.on("messageCreate", message =>{
@@ -35,8 +35,10 @@ client.on("messageCreate", message =>{
     const args = message.content.substring(prefix.length).split(/ +/);
     var command = client.commands.find(cmd => cmd.name == args[0]);
     if (!command) var command =  client.commands.find(cmd => cmd.alias == args[0]);
-    if (!command) return message.reply(`invalid command: ${args[0]}`)
+    if (!command) return message.reply(`invalid command: ${args[0]}`);
+    command.run(message,args,client);
 })
+
 client.once(Events.ClientReady, readyClient => {
     client.user.setPresence({ activities: [{ name: 'in a sandbox (?%, prefix ver.)' }], status: 'idle' });
     console.log(`logon success, user=${readyClient.user.tag}`);
