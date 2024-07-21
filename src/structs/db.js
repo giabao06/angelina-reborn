@@ -1,10 +1,4 @@
-import { knex } from 'knex';
+const sqlite3 = require ('sqlite3')
+const db=new sqlite3.Database('../data/db.sqlite');
 
-const db=require('knex')({
-    client: 'sqlite3',
-    connection:{
-        filename: '../data/db.sqlite',
-    },
-});
-
-export default db;
+module.exports = db;

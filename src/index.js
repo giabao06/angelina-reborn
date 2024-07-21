@@ -37,6 +37,7 @@ client.on("messageCreate", message =>{
     if (!command) var command =  client.commands.find(cmd => cmd.alias == args[0]);
     if (!command) return message.reply(`invalid command: ${args[0]}`);
     command.run(message,args,client);
+    console.log(`${message.author.globalName} (@${message.author.username}) used ${command.name};`);
 })
 
 client.once(Events.ClientReady, readyClient => {
