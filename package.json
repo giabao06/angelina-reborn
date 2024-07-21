@@ -3,6 +3,7 @@
     "discord.js": "^14.15.3",
     "sagiri": "^3.6.0",
     "saucenao.js": "^1.0.5",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   }
 }
