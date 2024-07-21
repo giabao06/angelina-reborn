@@ -1,28 +1,22 @@
-const { SlashCommandBuilder, CommandInteraction, CommandInteractionOptionResolver } = require('discord.js');
+const Command = require ("../structs/Command.js");
 
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('roll')
-        .setDescription('rng; you choose the max. (default max = 100, floor)')
-        .addStringOption(option =>
-            option.setName('max')
-                .setDescription('maximum number to rng (int >=1, default 100)')
-        )
-        .addBooleanOption(option => 
-            option.setName("restype") 
-                .setDescription('ya like decimal numbers (answer true) or integers (falsee)? <(") (default false)')
-        ),
-
-    async execute(interaction){
-        const tmp = interaction.options.getString('max');
-        if (Number(tmp)<1 && tmp != null) {await interaction.reply("invalid max, please check your input");}
-        else {
-            if (tmp==null) {var max = 100;}
-            else var max = Number(tmp);
-            var res = (Math.random()*max)+1;
-            var restype = interaction.options.getString(restype);
-            if ( restype == null || restype == "False") {res = Math.floor(res);}
-            await interaction.reply(String(res));
+module.exports = new Command({
+        name: "roll",
+        alias: [],
+        description: "rng; you choose the max. (default max=100, floor)",
+        
+        async run(message,args,client){
+            const tmp=args.slice(1).join(" ");
+            const restype = args.slice(2).join(" "); 
+            const n = tmp.substr(0,tmp.length-restype.length);
+            if (Number(n)<1 && n != "") {message.channel.send("invalid max, please check your input");}
+            else {
+                if (tmp==null) {var max = 100;}
+                else var max = Number(n);
+                var res = (Math.random()*max)+1;
+                if ( restype == "precise" ) {message.channel.send(String(res));}
+                else {res = Math.floor(res); message.channel.send(String(res));}
+                
         }
-    },
-};
+    }
+})
